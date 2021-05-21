@@ -392,6 +392,7 @@ namespace Data_Acquisition
             this.Controls.Add(this.txtB);
             this.Controls.Add(this.processComboBox);
             this.Controls.Add(this.txtA);
+            this.MaximizeBox = false;
             this.Name = "Form3";
             this.Text = "Form2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);

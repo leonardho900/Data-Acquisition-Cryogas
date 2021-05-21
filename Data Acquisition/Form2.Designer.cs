@@ -393,6 +393,7 @@ namespace Data_Acquisition
             this.Controls.Add(this.processComboBox);
             this.Controls.Add(this.txtA);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.MaximizeBox = false;
             this.Name = "Form2";
             this.Text = "Delete";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
