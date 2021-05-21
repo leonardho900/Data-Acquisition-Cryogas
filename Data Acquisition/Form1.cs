@@ -59,6 +59,7 @@ namespace Data_Acquisition
         private void Form1_Load(object sender, EventArgs e)
         {
             upLoadData();
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -76,29 +77,30 @@ namespace Data_Acquisition
 
         }
 
-
-
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        public void searchData(string valueToFind)
         {
-            try
-            {
-                DataView dv = sqlDt.DefaultView;
-                dv.RowFilter = string.Format("ID like '%{0}%'", txtSearch.Text);
-                dataGridView1.DataSource = dv.ToTable();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+  
+
+        public void txtSearch_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                DataView dv = sqlDt.DefaultView;
-                dv.RowFilter = string.Format("ID like '&{0}&'", txtSearch.Text);
-                dataGridView1.DataSource = dv.Table;
+                sqlConn.Open();
+                sqlQuery = "select * from dataentry.dataentry WHERE CONCAT(`ID`,`Process Name`,`Process Type`) LIKE '%" + txtSearch.Text + "%'";
+
+                sqlCmd = new MySqlCommand(sqlQuery, sqlConn);
+                sqlRd = sqlCmd.ExecuteReader();
+
+                sqlConn.Close();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sqlQuery, sqlConn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dataGridView1.DataSource = table;
+                
             }
             catch (Exception ex)
             {

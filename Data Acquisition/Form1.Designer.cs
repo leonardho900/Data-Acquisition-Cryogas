@@ -120,7 +120,6 @@ namespace Data_Acquisition
             this.txtSearch.Size = new System.Drawing.Size(211, 27);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // pictureBox1
             // 
@@ -157,6 +156,7 @@ namespace Data_Acquisition
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Data Acquisition";
             this.Load += new System.EventHandler(this.Form1_Load);
